@@ -24,17 +24,6 @@ vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
 
--- Configure Commentary plugin
-vim.g.commentary_line_mapping = "<C-_>"
-vim.g.commentary_register_keybindings = {
-  n = { "<leader>c", "<leader>" },
-  v = { "<leader>c", "<leader>" },
-}
-
--- Enable commenting with Ctrl+/
-vim.api.nvim_set_keymap('n', '<C-_>', ':Commentary<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<C-_>', ':Commentary<CR>', { noremap = true, silent = true })
-
 
 -- ultisnip dir
 vim.g.UltiSnipsSnippetDirectories = {'~/dotfiles/nvim/snippets'}

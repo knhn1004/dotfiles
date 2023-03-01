@@ -18,7 +18,7 @@ require('packer').startup(function()
   use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
   use 'nvim-treesitter/playground'
 
-  use 'tpope/vim-commentary'
+  -- use 'tpope/vim-commentary'
   -- use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
@@ -51,6 +51,27 @@ require('packer').startup(function()
       {'L3MON4D3/LuaSnip'},             -- Required
       {'rafamadriz/friendly-snippets'}, -- Optional
     }
+  }
+  -- Comment.nvim
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+
+  use 'nvim-tree/nvim-web-devicons'
+  use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
+
+  use {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+      require('gitsigns').setup()
+    end
   }
 
 

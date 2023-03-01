@@ -12,7 +12,6 @@ lsp.ensure_installed({
   'gopls',
 })
 
-
 -- Fix Undefined global 'vim'
 lsp.configure('lua-language-server', {
     settings = {
@@ -71,4 +70,20 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true
 })
+
+
+local lspconfig = require'lspconfig'
+local configs = require'lspconfig/configs'
+
+-- if not lspconfig.clangd then
+  configs.clangd = {
+    default_config = {
+      cmd = {'clangd', '--compile-commands-dir=~/.clang/'},
+      filetypes = {'c', 'cpp'},
+      root_dir = lspconfig.util.root_pattern('.git', 'compile_commands.json'),
+    },
+  }
+-- end
+
+lspconfig.clangd.setup{}
 
