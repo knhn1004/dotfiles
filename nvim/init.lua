@@ -1,18 +1,4 @@
-vim.cmd [[packadd packer.nvim]]
-
--- Load plugins
-require('packer').startup(function()
-  use 'wbthomason/packer.nvim'
-  use 'tpope/vim-sensible'
-  use 'tpope/vim-surround'
-  use {'neoclide/coc.nvim', branch = 'release'}
-  use 'lambdalisue/fern.vim'
-  use 'morhetz/gruvbox'
-  use 'tpope/vim-commentary'
-  use 'SirVer/ultisnips'
-
-end)
-
+require('plugins')
 
 -- Set options
 vim.cmd('set rnu nu')
@@ -20,6 +6,11 @@ vim.cmd('syntax on')
 
 -- Remap leader to space
 vim.g.mapleader = ' '
+
+-- Set tab to 2 spaces
+vim.cmd('set tabstop=2')
+vim.cmd('set shiftwidth=2')
+vim.cmd('set expandtab')
 
 -- Fern setup
 vim.api.nvim_set_keymap('n', '<leader>f', ':Fern . -drawer<CR>', { noremap = true })
@@ -70,3 +61,7 @@ vim.g.commentary_register_keybindings = {
 vim.api.nvim_set_keymap('n', '<C-_>', ':Commentary<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<C-_>', ':Commentary<CR>', { noremap = true, silent = true })
 
+
+-- ultisnip dir
+vim.g.UltiSnipsSnippetDirectories = {'~/dotfiles/nvim/snippets'}
+-- vim.g.UltiSnipsExpandTrigger = "<Tab>"
