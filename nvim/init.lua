@@ -1,5 +1,6 @@
 -- -- Define the `vim` global variable
 vim = vim or {}
+use = use or {}
 
 -- Add the absolute path to the package path
 package.path = package.path .. ";" .. os.getenv("HOME") .. "/dotfiles/nvim/?.lua"
@@ -16,28 +17,6 @@ vim.cmd('set shiftwidth=2')
 vim.cmd('set expandtab')
 
 vim.o.termguicolors = true
-
--- Define a function to compile and run C++ files
-function CompileAndRunCpp()
-  -- Get the current buffer name
-  local filename = vim.fn.expand('%:p')
-
-  -- Compile the file using g++
-  local cmd = 'g++ -std=c++20 -O2 -Wall -Wextra -Wshadow -o a.out '
-    .. vim.fn.shellescape(filename)
-  vim.fn.system(cmd)
-
-  -- Run the compiled file in a new vertical split pane
-  vim.cmd('vsplit')
-  vim.cmd('terminal ./a.out')
-
-  -- Switch back to the original buffer
-  vim.api.nvim_command('wincmd h')
-end
-
--- Bind the function to a key combination
-vim.api.nvim_set_keymap('n', '<C-A-n>', ':lua CompileAndRunCpp()<CR>', { noremap = true, silent = true })
-
 
 -- Set the prefix key for window commands to ctrl+hjkl
 vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = true })

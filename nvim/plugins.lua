@@ -5,7 +5,6 @@ require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'tpope/vim-sensible'
   use 'tpope/vim-surround'
-  -- use 'lambdalisue/fern.vim'
   -- use 'morhetz/gruvbox'
   use({
     'rose-pine/neovim',
@@ -17,10 +16,9 @@ require('packer').startup(function()
   })
 
   use ('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-  use ('nvim-treesitter/playground')
+  use 'nvim-treesitter/playground'
 
   use 'tpope/vim-commentary'
-  use 'SirVer/ultisnips'
   -- use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
@@ -28,9 +26,9 @@ require('packer').startup(function()
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use ('ThePrimeagen/harpoon')
-  use ('mbbill/undotree')
-  use ('tpope/vim-fugitive')
+  use 'ThePrimeagen/harpoon'
+  use 'mbbill/undotree'
+  use 'tpope/vim-fugitive'
 
   use {
     'VonHeikemen/lsp-zero.nvim',

@@ -170,11 +170,6 @@ _G.packer_plugins = {
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
-  ultisnips = {
-    loaded = true,
-    path = "/home/oliver/.local/share/nvim/site/pack/packer/start/ultisnips",
-    url = "https://github.com/SirVer/ultisnips"
-  },
   undotree = {
     loaded = true,
     path = "/home/oliver/.local/share/nvim/site/pack/packer/start/undotree",
