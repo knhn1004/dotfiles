@@ -1,3 +1,6 @@
+-- -- Define the `vim` global variable
+vim = vim or {}
+
 -- Add the absolute path to the package path
 package.path = package.path .. ";" .. os.getenv("HOME") .. "/dotfiles/nvim/?.lua"
 
