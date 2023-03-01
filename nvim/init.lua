@@ -1,4 +1,9 @@
+-- Add the absolute path to the package path
+package.path = package.path .. ";" .. os.getenv("HOME") .. "/dotfiles/nvim/?.lua"
+
+-- Load the plugins
 require('plugins')
+
 
 -- Set options
 vim.cmd('set rnu nu')
