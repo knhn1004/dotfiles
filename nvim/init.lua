@@ -25,7 +25,5 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = true 
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true })
 
 
--- ultisnip dir
-vim.g.UltiSnipsSnippetDirectories = {'~/dotfiles/nvim/snippets'}
--- vim.g.UltiSnipsExpandTrigger = "<Tab>"
-
+-- enable another line of comment after an empty line of comment
+ vim.opt_local.formatoptions:remove({ 'r', 'o' })

@@ -79,6 +79,8 @@ require('packer').startup(function()
     config = function() require("nvim-autopairs").setup {} end
   }
 
+  use 'github/copilot.vim'
+
 
 end)
 
