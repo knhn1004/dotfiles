@@ -34,3 +34,7 @@ end
 -- Bind the function to a key combination
 vim.api.nvim_set_keymap('n', '<C-A-n>', ':lua CompileAndRunCpp()<CR>', { noremap = true, silent = true })
 
+
+-- remove the default <C-W> mapping to avoid bad habits on browsers
+vim.api.nvim_set_keymap('i', '<C-W>', '<Nop>', { noremap = true })
+
