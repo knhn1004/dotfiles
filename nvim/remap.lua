@@ -17,9 +17,8 @@ function CompileAndRunCpp()
     .. vim.fn.shellescape(filename)
   vim.fn.system(cmd)
 
-  -- Run the compiled file in a new vertical split pane
-  vim.cmd('vsplit')
-  vim.cmd('terminal ./a.out')
+  -- Run the compiled file in the same buffer
+  vim.cmd('terminal! ./a.out')
 
   -- Switch back to the original buffer
   vim.api.nvim_command('wincmd h')
