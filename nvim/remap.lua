@@ -12,6 +12,12 @@ function CompileAndRunCpp()
   -- Get the current buffer name
   local filename = vim.fn.expand('%:p')
 
+  -- Check if the current buffer is modified
+  if vim.bo.modified then
+    -- Save the current buffer before continuing
+    vim.cmd('write')
+  end
+
   -- Compile the file using g++
   local cmd = 'g++ -std=c++20 -O2 -Wall -Wextra -Wshadow -o a.out '
     .. vim.fn.shellescape(filename)
@@ -23,6 +29,7 @@ function CompileAndRunCpp()
   -- Switch back to the original buffer
   vim.api.nvim_command('wincmd h')
 end
+
 
 -- Bind the function to a key combination
 vim.api.nvim_set_keymap('n', '<C-A-n>', ':lua CompileAndRunCpp()<CR>', { noremap = true, silent = true })
