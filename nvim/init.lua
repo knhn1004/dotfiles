@@ -26,4 +26,7 @@ vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = true 
 
 
 -- enable another line of comment after an empty line of comment
- vim.opt_local.formatoptions:remove({ 'r', 'o' })
+vim.opt_local.formatoptions:remove({ 'r', 'o' })
+
+-- set vim search case insensitive
+vim.opt.ignorecase = true
