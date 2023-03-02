@@ -124,6 +124,6 @@ export PATH="/usr/lib/llvm-12/bin:$PATH"
 
 # Start tmux automatically
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-  tmux attach-session -t mysession || tmux new-session -s mysession
+  tmux attach-session -t oliver || tmux new-session -s oliver
 fi
 

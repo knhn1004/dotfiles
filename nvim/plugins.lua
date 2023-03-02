@@ -81,6 +81,5 @@ require('packer').startup(function()
 
   use 'github/copilot.vim'
   use 'christoomey/vim-tmux-navigator'
-  use 'ggandor/lightspeed.nvim'
 
 end)
