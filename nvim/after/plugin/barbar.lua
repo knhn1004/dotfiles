@@ -22,6 +22,7 @@ map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
 -- map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
 -- Close buffer
 map('n', '<A-q>', '<Cmd>BufferClose<CR>', opts)
+map('n', '<A-Q>', '<Cmd>BufferCloseAllButCurrentOrPinned<CR>', opts)
 -- Wipeout buffer
 --                 :BufferWipeout
 -- Close commands

@@ -96,6 +96,13 @@ local whileT = s("wt", {
 })
 table.insert(snippets, whileT)
 
+local cout = s("co", {
+  t("cout << "),
+  i(1),
+  t(" <<  endl;"),
+})
+table.insert(snippets, cout)
+
 -- end snippets
 
 
