@@ -40,10 +40,4 @@ vim.api.nvim_set_keymap("n", "H", "H", { noremap = true, silent = true })
 -- Reset the keymap for the 'L' key
 vim.api.nvim_set_keymap("n", "L", "L", { noremap = true, silent = true })
 
--- move current line in up/down in normal mode
-vim.api.nvim_set_keymap("n", "<C-j>", "ddp", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-k>", "ddkP", { noremap = true, silent = true })
-
--- move multilines up/down in visual mode
-vim.api.nvim_set_keymap("v", "<C-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<C-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("x", "s", "<Plug>VSurround", {})

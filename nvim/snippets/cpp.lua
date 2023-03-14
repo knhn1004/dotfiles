@@ -71,6 +71,7 @@ end --}}}
 -- start snippets
 local competitiveProgrammingStarter = s("cp", {
   t("#include <bits/stdc++.h>"),
+  t({ "", "#define ll long long" }),
   t({ "", "using namespace std;" }),
   t({ "", "" }),
   t({ "", "int main() {" }),
