@@ -9,3 +9,90 @@ require("lspconfig").clangd.setup({
 require("notify").setup({
   background_colour = "#00000000",
 })
+
+-- DAP
+local ok, dap = pcall(require, "dap")
+if not ok then
+  return
+end
+
+vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
+
+vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
+vim.keymap.set("n", "<F3>", ":lua require'dap'.step_over()<CR>")
+vim.keymap.set("n", "<F2>", ":lua require'dap'.step_into()<CR>")
+vim.keymap.set("n", "<F12>", ":lua require'dap'.step_out()<CR>")
+vim.keymap.set("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
+vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+-- vim.keymap.set("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
+vim.keymap.set("n", "<leader>dt", ":lua require'dap-go'.debug_test()<CR>")
+
+require("dapui").setup()
+require("nvim-dap-virtual-text").setup({
+  all_frames = true,
+  highlight_changed_variables = true,
+  show_stop_reason = true,
+})
+
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close()
+end
+
+-- cpp dap
+
+dap.adapters.lldb = {
+  type = "executable",
+  command = "/usr/lib/llvm-14/bin/lldb-vscode", -- adjust as needed, must be absolute path
+  name = "lldb",
+  adapterTimeout = 5000, -- Increase the timeout to 5 seconds
+}
+local function compile_and_get_executable_path()
+  local filetype = vim.bo.filetype
+  local filepath = vim.fn.expand("%:p:h") .. "/"
+  local executable
+
+  if filetype == "c" then
+    local input = vim.fn.expand("%:t")
+    executable = filepath .. "a.out"
+    vim.fn.system("gcc -g " .. input .. " -o " .. executable)
+  elseif filetype == "cpp" then
+    local input = vim.fn.expand("%:t")
+    executable = filepath .. "a.out"
+    vim.fn.system("g++ -g " .. input .. " -o " .. executable)
+  elseif filetype == "rust" then -- TODO: this is not working for now
+    vim.fn.system("cargo build --bin " .. vim.fn.expand("%:t:r"))
+    executable = filepath .. "target/debug/" .. vim.fn.expand("%:t:r")
+  else
+    print("Unsupported filetype")
+    return
+  end
+
+  return executable
+end
+
+dap.configurations.cpp = {
+  {
+    name = "Launch",
+    type = "lldb",
+    request = "launch",
+    --[[ program = function()
+      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+    end, ]]
+    program = compile_and_get_executable_path,
+    cwd = "${workspaceFolder}",
+    stopOnEntry = false,
+    args = {},
+    runInTerminal = false,
+  },
+}
+
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
