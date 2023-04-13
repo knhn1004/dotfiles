@@ -18,12 +18,23 @@ end
 
 vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
 
-vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
-vim.keymap.set("n", "<F3>", ":lua require'dap'.step_over()<CR>")
-vim.keymap.set("n", "<F2>", ":lua require'dap'.step_into()<CR>")
-vim.keymap.set("n", "<F12>", ":lua require'dap'.step_out()<CR>")
-vim.keymap.set("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
-vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+vim.api.nvim_set_keymap("n", "<F5>", "<cmd>lua require'dap'.continue()<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<F5>", ":lua require'dap'.continue()<CR>")
+vim.api.nvim_set_keymap("n", "<F3>", "<cmd>lua require'dap'.step_over()<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<F3>", ":lua require'dap'.step_over()<CR>")
+vim.api.nvim_set_keymap("n", "<F2>", "<cmd>lua require'dap'.step_into()<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<F2>", ":lua require'dap'.step_into()<CR>")
+-- vim.keymap.set("n", "<F12>", ":lua require'dap'.step_out()<CR>")
+vim.api.nvim_set_keymap("n", "<F12>", "<cmd>lua require'dap'.step_out()<CR>", { noremap = true, silent = true })
+
+-- vim.keymap.set("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>")
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>db",
+  "<cmd>lua require'dap'.toggle_breakpoint()<CR>",
+  { noremap = true, silent = true }
+)
+vim.keymap.set("n", "<leader>dB", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
 -- vim.keymap.set("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
 vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
 vim.keymap.set("n", "<leader>dt", ":lua require'dap-go'.debug_test()<CR>")
@@ -96,3 +107,6 @@ dap.configurations.cpp = {
 
 dap.configurations.c = dap.configurations.cpp
 dap.configurations.rust = dap.configurations.cpp
+
+-- java dap
+-- TODO: add java dap configurations

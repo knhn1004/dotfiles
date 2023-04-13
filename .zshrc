@@ -129,3 +129,6 @@ fi
 
 
 alias p="playerctl"
+alias stbdfs="cd $HOME/ai/stable-diffusion-webui/ && ./webui.sh --skip-torch-cuda-test --precision full --no-half"
+
+alias jdoc="/opt/jdoc.sh"
