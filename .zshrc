@@ -124,7 +124,7 @@ export PATH="/usr/lib/llvm-12/bin:$PATH"
 
 # Start tmux automatically
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-   tmux attach-session -t oliver || tmux new-session -s oliver
+   tmux attach-session -t $USER || tmux new-session -s $USER
 fi
 
 
@@ -132,3 +132,13 @@ alias p="playerctl"
 alias stbdfs="cd $HOME/ai/stable-diffusion-webui/ && ./webui.sh --skip-torch-cuda-test --precision full --no-half"
 
 alias jdoc="/opt/jdoc.sh"
+
+# clipboard utility
+alias "c=xclip -selection clipboard"
+
+# pnpm
+export PNPM_HOME="/home/oliver/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+export ANDROID_HOME=$HOME/Android/Sdk

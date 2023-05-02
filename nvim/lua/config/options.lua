@@ -3,5 +3,3 @@
 -- Add any additional options here
 vim.opt.winbar = "%=%m %f"
 vim.opt.wrap = true
-
-vim.cmd("autocmd FileType java setlocal shiftwidth=3") -- CS1B specific - TODO: remove this later

@@ -29,3 +29,8 @@ function OPEN_CP_DEBUG_WINDOW()
 end
 
 vim.api.nvim_set_keymap("n", "<C-A-m>", ":lua OPEN_CP_DEBUG_WINDOW()<CR>", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<C-h>", "<cmd>lua require('tmux').move_left()<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-j>", "<cmd>lua require('tmux').move_down()<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-k>", "<cmd>lua require('tmux').move_up()<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<C-l>", "<cmd>lua require('tmux').move_right()<cr>", { noremap = true })

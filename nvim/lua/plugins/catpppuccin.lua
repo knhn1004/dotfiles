@@ -1,3 +1,8 @@
+local function is_daytime()
+  local current_hour = tonumber(os.date("%H"))
+  return current_hour >= 6 and current_hour < 18
+end
+
 return {
   {
     "catppuccin/nvim",
@@ -6,7 +11,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-mocha",
+      colorscheme = is_daytime() and "github_light_colorblind" or "catppuccino-mocha",
     },
   },
 }
