@@ -78,6 +78,8 @@ plugins=(
 	docker
   vi-mode
   tmux
+  flutter
+  npm
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -142,3 +144,20 @@ export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
 export ANDROID_HOME=$HOME/Android/Sdk
+
+alias loadgpt='export $(cat $HOME/dotfiles/nvim/.env.gpt)'
+alias bettercap="docker run -it --privileged --net=host -v ~/bettercap:/bettercap -w /bettercap bettercap/bettercap"
+
+
+alias emulator="export QEMU_AUDIO_DRV=none && $ANDROID_HOME/emulator/emulator -avd Pixel_6_Pro_API_33 "
+
+export DENO_INSTALL="/home/oliver/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/oliver/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/oliver/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/oliver/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/oliver/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH=$PATH:/usr/local/go/bin

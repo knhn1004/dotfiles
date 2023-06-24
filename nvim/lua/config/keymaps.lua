@@ -34,3 +34,5 @@ vim.api.nvim_set_keymap("n", "<C-h>", "<cmd>lua require('tmux').move_left()<cr>"
 vim.api.nvim_set_keymap("n", "<C-j>", "<cmd>lua require('tmux').move_down()<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<C-k>", "<cmd>lua require('tmux').move_up()<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<C-l>", "<cmd>lua require('tmux').move_right()<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>co", "<cmd>ChatGPTEditWithInstructions<cr>", { noremap = true })
+-- vim.api.nvim_set_keymap("n", "<leader>cj", "<cmd>ChatGPTCompleteCode<cr>", { noremap = true })

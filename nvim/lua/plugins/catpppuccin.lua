@@ -11,7 +11,8 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = is_daytime() and "github_light_colorblind" or "catppuccino-mocha",
+      -- colorscheme = is_daytime() and "github_light_colorblind" or "catppuccin-mocha",
+      colorscheme = "catppuccin-mocha",
     },
   },
 }

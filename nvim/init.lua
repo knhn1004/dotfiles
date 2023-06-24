@@ -10,12 +10,6 @@ require("notify").setup({
   background_colour = "#00000000",
 })
 
--- DAP
-local ok, dap = pcall(require, "dap")
-if not ok then
-  return
-end
-
 vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", numhl = "" })
 
 vim.api.nvim_set_keymap("n", "<F5>", "<cmd>lua require'dap'.continue()<CR>", { noremap = true, silent = true })
@@ -81,6 +75,10 @@ local function compile_and_get_executable_path()
   elseif filetype == "rust" then -- TODO: this is not working for now
     vim.fn.system("cargo build --bin " .. vim.fn.expand("%:t:r"))
     executable = filepath .. "target/debug/" .. vim.fn.expand("%:t:r")
+  elseif filetype == "java" then
+    vim.fn.system("javac -g" .. vim.fn.expand("%:t"))
+    local classname = vim.fn.expand("%:t:r")
+    executable = filepath .. classname .. ".class"
   else
     print("Unsupported filetype")
     return
@@ -110,3 +108,24 @@ dap.configurations.rust = dap.configurations.cpp
 
 -- java dap
 -- TODO: add java dap configurations
+
+--[[ dap.configurations.java = {
+  {
+    type = "java",
+    name = "Debug (Launch)",
+    request = "launch",
+    mainClass = "com.example.Main",
+    -- You can also specify other configurations like projectName, vmArgs, etc.
+  },
+}
+
+dap.adapters.java = {
+  type = "executable",
+  command = "java",
+  args = {
+    "-jar",
+    HOME .. "/vscode-java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar",
+  },
+} ]]
+
+dap.configurations.java = dap.configurations.cpp
