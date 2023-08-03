@@ -161,3 +161,6 @@ if [ -f '/home/oliver/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/
 if [ -f '/home/oliver/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/oliver/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 export PATH=$PATH:/usr/local/go/bin
+
+
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"

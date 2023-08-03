@@ -38,7 +38,7 @@ return {
         treesitter = true,
         which_key = true,
       },
-      colorscheme = "catppuccin-frappe",
+      colorscheme = "catppuccin-mocha",
     },
   },
 }
