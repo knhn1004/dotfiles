@@ -1,4 +1,4 @@
-source ~/zsh-snap/znap.zsh
+source ~/Repos/znap/znap.zsh  # Start Znap
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -139,28 +139,42 @@ alias jdoc="/opt/jdoc.sh"
 alias "c=xclip -selection clipboard"
 
 # pnpm
-export PNPM_HOME="/home/oliver/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+export PNPM_HOME="/Users/oliver/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 # pnpm end
 
-export ANDROID_HOME=$HOME/Android/Sdk
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/emulator
 
 alias loadgpt='export $(cat $HOME/dotfiles/nvim/.env.gpt)'
 alias bettercap="docker run -it --privileged --net=host -v ~/bettercap:/bettercap -w /bettercap bettercap/bettercap"
 
 
-alias emulator="export QEMU_AUDIO_DRV=none && $ANDROID_HOME/emulator/emulator -avd Pixel_6_Pro_API_33 "
+# alias emulator="export QEMU_AUDIO_DRV=none && $ANDROID_HOME/emulator/emulator -avd Pixel_6_Pro_API_33 "
 
-export DENO_INSTALL="/home/oliver/.deno"
+export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+# flutter
+export PATH="$HOME/flutter/bin:$PATH"
+
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/oliver/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/oliver/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '$HOME/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/oliver/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/oliver/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/oliver/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '$HOME/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/oliver/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 export PATH=$PATH:/usr/local/go/bin
 
 
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+# Rust
+source "$HOME/.cargo/env"

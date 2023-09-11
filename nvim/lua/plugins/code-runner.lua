@@ -17,6 +17,7 @@ end ]]
 return {
   {
     "CRAG666/code_runner.nvim",
+    event = "VeryLazy",
     opts = {
       filetype = {
         java = "cd $dir && javac $fileName && java $fileNameWithoutExt",
